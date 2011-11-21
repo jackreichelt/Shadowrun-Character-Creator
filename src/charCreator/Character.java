@@ -303,6 +303,7 @@ public class Character {
 		 */
 		
 		// Apply the changes.
+		// TODO implement skill groups.
 		if (!activeSkills.containsKey(skill)) {
 			BP -= rank * 4;
 		} else {
