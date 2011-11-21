@@ -101,6 +101,10 @@ public class Character {
 			
 			metaType = type;
 		}
+		
+		/* TODO implement check to ensure all attributes are in range. This accounts
+		 * 		for metatypes with different ranges.
+		 */
 	}
 	
 	/**
@@ -340,5 +344,27 @@ public class Character {
 			BP -= rank * 4;
 		}
 		knowledgeSkills.put(skill, rank);
+	}
+	
+	/**
+	 * Get the initiative of the character.
+	 * @return the initiative
+	 */
+	public int getInitiative() {
+		return this.initiative;
+	}
+	
+	/**
+	 * Get the number of initiative passes of the character
+	 * @return the number of initiative passes/
+	 */
+	public int getInitPasses() {
+		return this.initPasses;
+	}
+	
+	public void changeTotalBP(int newBP) {
+		int difference = newBP - totalBP;
+		BP += difference;
+		totalBP = newBP;
 	}
 }

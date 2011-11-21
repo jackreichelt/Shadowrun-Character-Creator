@@ -19,7 +19,7 @@ public class ActiveSkillTest {
 		
 		// Empty name
 		try {
-			fail = new ActiveSkill("", Tattrib);
+			fail = new ActiveSkill("", Tattrib, false);
 			Assert.fail("Empty name should fail.");
 		} catch (Exception e) {
 			// Test passed.
@@ -27,7 +27,7 @@ public class ActiveSkillTest {
 		
 		// Null name
 		try {
-			fail = new ActiveSkill(null, Tattrib);
+			fail = new ActiveSkill(null, Tattrib, false);
 			Assert.fail("Null name should fail.");
 		} catch (Exception e) {
 			// Test passed.
@@ -35,7 +35,7 @@ public class ActiveSkillTest {
 		
 		// Null attrib
 		try {
-			fail = new ActiveSkill(Tname, null);
+			fail = new ActiveSkill(Tname, null, false);
 			Assert.fail("Null attrib should fail.");
 		} catch (Exception e) {
 			// Test passed.
@@ -43,7 +43,7 @@ public class ActiveSkillTest {
 		
 		// Correct
 		try {
-			pass = new ActiveSkill(Tname, Tattrib);
+			pass = new ActiveSkill(Tname, Tattrib, false);
 			// Test passed
 		} catch (Exception e) {
 			System.out.println("Failure: " + e.getMessage());
@@ -54,7 +54,7 @@ public class ActiveSkillTest {
 	@Before
 	public void setup() {
 		try {
-			pistols = new ActiveSkill(Tname, Tattrib);
+			pistols = new ActiveSkill(Tname, Tattrib, false);
 			// Test passed
 		} catch (Exception e) {
 			System.out.println("Failure: " + e.getMessage());
@@ -75,6 +75,11 @@ public class ActiveSkillTest {
 	@Test
 	public void toStringTest() {
 		Assert.assertEquals("Pistols", pistols.toString());
+	}
+	
+	@Test
+	public void isSkillGroupTest() {
+		Assert.assertEquals(false, pistols.isSkillGroup());
 	}
 
 }
