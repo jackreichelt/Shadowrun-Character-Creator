@@ -298,17 +298,26 @@ public class Character {
 		if (activeSkills.containsValue(6) && (rank == 6 || rank == 5)) {
 			throw (new Exception("Too many high rank skills."));
 		}
-		/**
-		 * ADD EXCEPTION FOR TOO MANY FIVES!
-		 */
+		if (activeSkills.containsValue(5) && (rank == 6)) {
+			throw (new Exception("Too many high rank skills."));
+		}
+		
 		
 		// Apply the changes.
-		// TODO implement skill groups.
-		if (!activeSkills.containsKey(skill)) {
-			BP -= rank * 4;
+		if (skill.isSkillGroup() == true) {
+			if (!activeSkills.containsKey(skill)) {
+				BP -= rank * 4;
+			} else {
+				BP += activeSkills.get(skill)*4;
+				BP -= rank * 4;
+			}
 		} else {
-			BP += activeSkills.get(skill)*4;
-			BP -= rank * 4;
+			if (!activeSkills.containsKey(skill)) {
+				BP -= rank * 10;
+			} else {
+				BP += activeSkills.get(skill)*10;
+				BP -= rank * 10;
+			}
 		}
 		activeSkills.put(skill, rank);
 	}
@@ -322,12 +331,6 @@ public class Character {
 		if (rank < 0 || rank > 6) {
 			throw (new Exception("Invalid rank."));
 		}
-		if (knowledgeSkills.containsValue(6) && (rank == 6 || rank == 5)) {
-			throw (new Exception("Too many high rank skills."));
-		}
-		/**
-		 * ADD EXCEPTION FOR TOO MANY FIVES!
-		 */
 		
 		// Apply the changes.
 		if (!knowledgeSkills.containsKey(skill)) {
